@@ -270,11 +270,18 @@
     [self setDotsColor:[self colorFromColorIndex]];
 }
 
+
 - (IBAction)countSliderTouchUpInside:(UISlider*)sender {
     self.capacity = sender.value;
     [self configureDots];
 
 }
+
+
+- (IBAction)countSliderValueChanged:(UISlider*)sender {
+    
+}
+
 
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hZU-HL-MrB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hZU-HL-MrB">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -13,11 +13,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Swy-fj-oXx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6eR-9A-Z3e">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="5DP-DN-qZu">
-                                <rect key="frame" x="20" y="20" width="280" height="92"/>
+                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="440" translatesAutoresizingMaskIntoConstraints="NO" id="5DP-DN-qZu">
+                                <rect key="frame" x="20" y="20" width="440" height="92"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="92" id="aPj-5N-KXV"/>
                                 </constraints>
@@ -27,7 +27,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="O90-sv-Wak">
-                                <rect key="frame" x="20" y="394" width="280" height="29"/>
+                                <rect key="frame" x="20" y="394" width="440" height="29"/>
                                 <segments>
                                     <segment title="Magenta"/>
                                     <segment title="Red"/>
@@ -39,7 +39,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vgy-pS-UWb">
-                                <rect key="frame" x="20" y="358" width="280" height="29"/>
+                                <rect key="frame" x="20" y="358" width="440" height="29"/>
                                 <segments>
                                     <segment title="Light"/>
                                     <segment title="Extra Light"/>
@@ -56,42 +56,45 @@
                                     <action selector="timeSliderValueChange:" destination="hZU-HL-MrB" eventType="valueChanged" id="GMr-BL-mre"/>
                                 </connections>
                             </slider>
-                            <slider appearanceType="aqua" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="4" minValue="4" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="bOl-lV-AJF">
-                                <rect key="frame" x="242" y="430" width="220" height="31"/>
+                            <slider appearanceType="aqua" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="4" minValue="4" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="2lM-2e-0qv">
+                                <rect key="frame" x="237" y="430" width="225" height="31"/>
                                 <connections>
-                                    <action selector="countSliderTouchUpInside:" destination="hZU-HL-MrB" eventType="touchUpInside" id="Rak-5Z-uCu"/>
+                                    <action selector="countSliderTouchUpInside:" destination="hZU-HL-MrB" eventType="touchUpInside" id="PNh-uX-s0C"/>
                                 </connections>
                             </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="IkB-h7-o0y" firstAttribute="leading" secondItem="6eR-9A-Z3e" secondAttribute="leading" constant="20" id="4vZ-li-k7R"/>
-                            <constraint firstItem="bOl-lV-AJF" firstAttribute="width" secondItem="IkB-h7-o0y" secondAttribute="width" id="CKX-p4-swl"/>
-                            <constraint firstItem="Swy-fj-oXx" firstAttribute="top" secondItem="bOl-lV-AJF" secondAttribute="bottom" constant="20" id="Esq-QB-5xw"/>
-                            <constraint firstItem="O90-sv-Wak" firstAttribute="leading" secondItem="vgy-pS-UWb" secondAttribute="leading" id="OC0-Hf-LKh"/>
-                            <constraint firstItem="Swy-fj-oXx" firstAttribute="top" secondItem="IkB-h7-o0y" secondAttribute="bottom" constant="20" id="QC1-LR-I3y"/>
-                            <constraint firstItem="O90-sv-Wak" firstAttribute="top" secondItem="vgy-pS-UWb" secondAttribute="bottom" constant="8" symbolic="YES" id="Sfb-GS-61j"/>
-                            <constraint firstAttribute="trailing" secondItem="bOl-lV-AJF" secondAttribute="trailing" constant="20" id="WBb-Wu-zZb"/>
+                            <constraint firstItem="2lM-2e-0qv" firstAttribute="trailing" secondItem="vgy-pS-UWb" secondAttribute="trailing" id="Hjb-bY-kuY"/>
+                            <constraint firstItem="IkB-h7-o0y" firstAttribute="leading" secondItem="6eR-9A-Z3e" secondAttribute="leading" constant="20" id="Lsh-lZ-Lw6"/>
+                            <constraint firstItem="2lM-2e-0qv" firstAttribute="trailing" secondItem="O90-sv-Wak" secondAttribute="trailing" id="Ltr-pn-23X"/>
+                            <constraint firstItem="Swy-fj-oXx" firstAttribute="top" secondItem="2lM-2e-0qv" secondAttribute="bottom" constant="20" id="VmB-XL-j5t"/>
+                            <constraint firstAttribute="trailing" secondItem="2lM-2e-0qv" secondAttribute="trailing" constant="20" id="Xhm-5P-ITM"/>
                             <constraint firstItem="5DP-DN-qZu" firstAttribute="leading" secondItem="6eR-9A-Z3e" secondAttribute="leading" constant="20" id="Ze6-Ut-yUV"/>
                             <constraint firstAttribute="trailing" secondItem="5DP-DN-qZu" secondAttribute="trailing" constant="20" id="a5f-tC-TFf"/>
-                            <constraint firstItem="O90-sv-Wak" firstAttribute="trailing" secondItem="vgy-pS-UWb" secondAttribute="trailing" id="h0c-O5-RRW"/>
-                            <constraint firstItem="O90-sv-Wak" firstAttribute="leading" secondItem="IkB-h7-o0y" secondAttribute="leading" id="hGZ-ae-bIz"/>
-                            <constraint firstItem="bOl-lV-AJF" firstAttribute="leading" secondItem="IkB-h7-o0y" secondAttribute="trailing" constant="13" id="juJ-Cn-p6v"/>
+                            <constraint firstItem="IkB-h7-o0y" firstAttribute="width" secondItem="2lM-2e-0qv" secondAttribute="width" id="a5o-5b-RwC"/>
+                            <constraint firstItem="O90-sv-Wak" firstAttribute="top" secondItem="vgy-pS-UWb" secondAttribute="bottom" constant="8" symbolic="YES" id="afU-z8-or3"/>
+                            <constraint firstItem="IkB-h7-o0y" firstAttribute="leading" secondItem="vgy-pS-UWb" secondAttribute="leading" id="dle-xm-gD9"/>
+                            <constraint firstItem="IkB-h7-o0y" firstAttribute="top" secondItem="O90-sv-Wak" secondAttribute="bottom" constant="8" symbolic="YES" id="fHJ-bz-HBv"/>
+                            <constraint firstItem="IkB-h7-o0y" firstAttribute="leading" secondItem="O90-sv-Wak" secondAttribute="leading" id="muw-gA-Oh1"/>
                             <constraint firstItem="5DP-DN-qZu" firstAttribute="top" secondItem="i16-2i-2SY" secondAttribute="bottom" id="p8V-O7-ehx"/>
-                            <constraint firstItem="O90-sv-Wak" firstAttribute="trailing" secondItem="bOl-lV-AJF" secondAttribute="trailing" id="tna-Ft-RVk"/>
-                            <constraint firstItem="IkB-h7-o0y" firstAttribute="top" secondItem="O90-sv-Wak" secondAttribute="bottom" constant="8" symbolic="YES" id="vCg-pF-JNO"/>
+                            <constraint firstItem="2lM-2e-0qv" firstAttribute="leading" secondItem="IkB-h7-o0y" secondAttribute="trailing" constant="8" symbolic="YES" id="sRs-X3-Ywi"/>
+                            <constraint firstItem="Swy-fj-oXx" firstAttribute="top" secondItem="IkB-h7-o0y" secondAttribute="bottom" constant="20" id="zWr-Qd-kl1"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="480" height="480"/>
                     <connections>
                         <outlet property="blurSegment" destination="vgy-pS-UWb" id="QHn-BC-EkR"/>
                         <outlet property="colorSegment" destination="O90-sv-Wak" id="Ahq-Oi-Dup"/>
-                        <outlet property="countSlider" destination="bOl-lV-AJF" id="6hl-Kn-kdy"/>
+                        <outlet property="countSlider" destination="2lM-2e-0qv" id="IHC-uB-Vpc"/>
                         <outlet property="infoLabel" destination="5DP-DN-qZu" id="Z1n-9j-Vhg"/>
                         <outlet property="timeSlider" destination="IkB-h7-o0y" id="1CT-ZG-0vH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CtN-eO-T6n" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="293" y="277"/>
         </scene>
         <!--Dots View Controller-->
         <scene sceneID="olo-IY-3AQ">
@@ -174,10 +177,10 @@
             <point key="canvasLocation" x="445" y="1020"/>
         </scene>
     </scenes>
-    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
