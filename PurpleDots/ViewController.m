@@ -120,10 +120,11 @@
     
     self.currentIndex = 0;
     
+#if (__IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1)
     if(self.blurView){
         [self.view addSubview:self.blurView];
     }
-
+#endif
 }
 -(UIView*)addDotToView:(UIView*)view frame:(CGRect)frame center:(CGPoint)center color:(UIColor*)color{
     UIView *dot = [[UIView alloc]initWithFrame:frame];

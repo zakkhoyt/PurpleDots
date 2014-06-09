@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hZU-HL-MrB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hZU-HL-MrB">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -13,33 +13,33 @@
                         <viewControllerLayoutGuide type="bottom" id="Swy-fj-oXx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6eR-9A-Z3e">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="440" translatesAutoresizingMaskIntoConstraints="NO" id="5DP-DN-qZu">
-                                <rect key="frame" x="20" y="20" width="440" height="92"/>
+                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="5DP-DN-qZu">
+                                <rect key="frame" x="20" y="20" width="280" height="92"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="92" id="aPj-5N-KXV"/>
                                 </constraints>
-                                <string key="text">Stare at the black dot in the center. The purlple dots will fade away and you will see green. Tap the screen to show controls to hide/show the controls</string>
+                                <string key="text">Stare at the black dot in the center. The colored dots will fade away and you will see their complamentary color. Tap the screen to show controls to hide/show the controls.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="O90-sv-Wak">
-                                <rect key="frame" x="20" y="394" width="440" height="29"/>
+                                <rect key="frame" x="20" y="394" width="280" height="29"/>
                                 <segments>
                                     <segment title="Magenta"/>
                                     <segment title="Red"/>
                                     <segment title="Green"/>
-                                    <segment title="Blue"/>
+                                    <segment title="Cyan"/>
                                 </segments>
                                 <connections>
                                     <action selector="colorSegmentValueChanged:" destination="hZU-HL-MrB" eventType="valueChanged" id="2Wr-8u-xHz"/>
                                 </connections>
                             </segmentedControl>
                             <segmentedControl appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vgy-pS-UWb">
-                                <rect key="frame" x="20" y="358" width="440" height="29"/>
+                                <rect key="frame" x="20" y="358" width="280" height="29"/>
                                 <segments>
                                     <segment title="Light"/>
                                     <segment title="Extra Light"/>
@@ -81,7 +81,6 @@
                             <constraint firstItem="O90-sv-Wak" firstAttribute="trailing" secondItem="bOl-lV-AJF" secondAttribute="trailing" id="tna-Ft-RVk"/>
                             <constraint firstItem="IkB-h7-o0y" firstAttribute="top" secondItem="O90-sv-Wak" secondAttribute="bottom" constant="8" symbolic="YES" id="vCg-pF-JNO"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <connections>
                         <outlet property="blurSegment" destination="vgy-pS-UWb" id="QHn-BC-EkR"/>
@@ -97,23 +96,23 @@
         <!--Dots View Controller-->
         <scene sceneID="olo-IY-3AQ">
             <objects>
-                <viewController storyboardIdentifier="DotsViewController" id="e1w-QY-xMS" customClass="DotsViewController" customModule="PurpleDots" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DotsViewController" id="e1w-QY-xMS" customClass="DotsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="K1m-6a-hIo"/>
                         <viewControllerLayoutGuide type="bottom" id="hPA-gf-j8x"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zCy-EQ-FcF">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="fXJ-lA-ZHx">
-                                <rect key="frame" x="18" y="430" width="444" height="31"/>
+                                <rect key="frame" x="18" y="430" width="284" height="31"/>
                                 <connections>
                                     <action selector="timeSliderValueChange:" destination="e1w-QY-xMS" eventType="valueChanged" id="otP-OK-8o1"/>
                                 </connections>
                             </slider>
-                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="440" translatesAutoresizingMaskIntoConstraints="NO" id="c71-0h-xYB">
-                                <rect key="frame" x="20" y="20" width="440" height="92"/>
+                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="c71-0h-xYB">
+                                <rect key="frame" x="20" y="20" width="280" height="92"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="92" id="q9G-kY-9XO"/>
                                 </constraints>
@@ -123,7 +122,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oms-J6-ohu">
-                                <rect key="frame" x="20" y="394" width="440" height="29"/>
+                                <rect key="frame" x="20" y="394" width="280" height="29"/>
                                 <segments>
                                     <segment title="Magenta"/>
                                     <segment title="Red"/>
@@ -135,7 +134,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dXa-TU-mEu">
-                                <rect key="frame" x="20" y="358" width="440" height="29"/>
+                                <rect key="frame" x="20" y="358" width="280" height="29"/>
                                 <segments>
                                     <segment title="Light"/>
                                     <segment title="Extra Light"/>
@@ -162,7 +161,6 @@
                             <constraint firstItem="fXJ-lA-ZHx" firstAttribute="trailing" secondItem="oms-J6-ohu" secondAttribute="trailing" id="t0a-e4-wyt"/>
                             <constraint firstItem="dXa-TU-mEu" firstAttribute="trailing" secondItem="c71-0h-xYB" secondAttribute="trailing" id="uHu-YR-txN"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <connections>
                         <outlet property="blurSegment" destination="dXa-TU-mEu" id="Ed4-qf-eTc"/>
@@ -177,4 +175,9 @@
         </scene>
     </scenes>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
 </document>
