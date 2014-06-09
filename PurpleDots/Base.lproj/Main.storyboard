@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hZU-HL-MrB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hZU-HL-MrB">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
     </dependencies>
@@ -16,18 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="bOl-lV-AJF">
-                                <rect key="frame" x="18" y="430" width="444" height="31"/>
-                                <connections>
-                                    <action selector="timeSliderValueChange:" destination="hZU-HL-MrB" eventType="valueChanged" id="WSb-p3-r2N"/>
-                                </connections>
-                            </slider>
                             <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="440" translatesAutoresizingMaskIntoConstraints="NO" id="5DP-DN-qZu">
                                 <rect key="frame" x="20" y="20" width="440" height="92"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="92" id="aPj-5N-KXV"/>
                                 </constraints>
-                                <string key="text">Stare at the black dot in the center. The purlple dots will fade away and you will see green. Tap to show controls which will autohide</string>
+                                <string key="text">Stare at the black dot in the center. The purlple dots will fade away and you will see green. Tap the screen to show controls to hide/show the controls</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -56,33 +50,132 @@
                                     <action selector="blurSegmentValueChanged:" destination="hZU-HL-MrB" eventType="valueChanged" id="d50-kV-DL8"/>
                                 </connections>
                             </segmentedControl>
+                            <slider appearanceType="aqua" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="4" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="IkB-h7-o0y">
+                                <rect key="frame" x="18" y="430" width="215" height="31"/>
+                                <connections>
+                                    <action selector="timeSliderValueChange:" destination="hZU-HL-MrB" eventType="valueChanged" id="GMr-BL-mre"/>
+                                </connections>
+                            </slider>
+                            <slider appearanceType="aqua" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="4" minValue="4" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="bOl-lV-AJF">
+                                <rect key="frame" x="242" y="430" width="220" height="31"/>
+                                <connections>
+                                    <action selector="countSliderTouchUpInside:" destination="hZU-HL-MrB" eventType="touchUpInside" id="Rak-5Z-uCu"/>
+                                    <action selector="countSliderValueChanged:" destination="hZU-HL-MrB" eventType="valueChanged" id="jp2-zT-gHk"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bOl-lV-AJF" firstAttribute="top" secondItem="O90-sv-Wak" secondAttribute="bottom" constant="8" symbolic="YES" id="5IH-mS-xyY"/>
-                            <constraint firstItem="O90-sv-Wak" firstAttribute="trailing" secondItem="vgy-pS-UWb" secondAttribute="trailing" id="Xfa-0S-2ET"/>
+                            <constraint firstItem="IkB-h7-o0y" firstAttribute="leading" secondItem="6eR-9A-Z3e" secondAttribute="leading" constant="20" id="4vZ-li-k7R"/>
+                            <constraint firstItem="bOl-lV-AJF" firstAttribute="width" secondItem="IkB-h7-o0y" secondAttribute="width" id="CKX-p4-swl"/>
+                            <constraint firstItem="Swy-fj-oXx" firstAttribute="top" secondItem="bOl-lV-AJF" secondAttribute="bottom" constant="20" id="Esq-QB-5xw"/>
+                            <constraint firstItem="O90-sv-Wak" firstAttribute="leading" secondItem="vgy-pS-UWb" secondAttribute="leading" id="OC0-Hf-LKh"/>
+                            <constraint firstItem="Swy-fj-oXx" firstAttribute="top" secondItem="IkB-h7-o0y" secondAttribute="bottom" constant="20" id="QC1-LR-I3y"/>
+                            <constraint firstItem="O90-sv-Wak" firstAttribute="top" secondItem="vgy-pS-UWb" secondAttribute="bottom" constant="8" symbolic="YES" id="Sfb-GS-61j"/>
+                            <constraint firstAttribute="trailing" secondItem="bOl-lV-AJF" secondAttribute="trailing" constant="20" id="WBb-Wu-zZb"/>
                             <constraint firstItem="5DP-DN-qZu" firstAttribute="leading" secondItem="6eR-9A-Z3e" secondAttribute="leading" constant="20" id="Ze6-Ut-yUV"/>
                             <constraint firstAttribute="trailing" secondItem="5DP-DN-qZu" secondAttribute="trailing" constant="20" id="a5f-tC-TFf"/>
-                            <constraint firstItem="bOl-lV-AJF" firstAttribute="leading" secondItem="O90-sv-Wak" secondAttribute="leading" id="aTr-72-TKa"/>
-                            <constraint firstItem="vgy-pS-UWb" firstAttribute="trailing" secondItem="5DP-DN-qZu" secondAttribute="trailing" id="bG3-1b-MVS"/>
-                            <constraint firstItem="O90-sv-Wak" firstAttribute="trailing" secondItem="bOl-lV-AJF" secondAttribute="trailing" id="dE7-mf-TlJ"/>
-                            <constraint firstItem="O90-sv-Wak" firstAttribute="top" secondItem="vgy-pS-UWb" secondAttribute="bottom" constant="8" symbolic="YES" id="f0P-Os-Rjn"/>
-                            <constraint firstAttribute="bottom" secondItem="bOl-lV-AJF" secondAttribute="bottom" constant="20" symbolic="YES" id="hV8-g1-gbP"/>
-                            <constraint firstItem="O90-sv-Wak" firstAttribute="leading" secondItem="vgy-pS-UWb" secondAttribute="leading" id="ocg-mQ-wZF"/>
-                            <constraint firstItem="vgy-pS-UWb" firstAttribute="leading" secondItem="5DP-DN-qZu" secondAttribute="leading" id="uuE-4i-EIv"/>
-                            <constraint firstItem="5DP-DN-qZu" firstAttribute="top" secondItem="i16-2i-2SY" secondAttribute="bottom" id="wGT-cl-Xbn"/>
+                            <constraint firstItem="O90-sv-Wak" firstAttribute="trailing" secondItem="vgy-pS-UWb" secondAttribute="trailing" id="h0c-O5-RRW"/>
+                            <constraint firstItem="O90-sv-Wak" firstAttribute="leading" secondItem="IkB-h7-o0y" secondAttribute="leading" id="hGZ-ae-bIz"/>
+                            <constraint firstItem="bOl-lV-AJF" firstAttribute="leading" secondItem="IkB-h7-o0y" secondAttribute="trailing" constant="13" id="juJ-Cn-p6v"/>
+                            <constraint firstItem="5DP-DN-qZu" firstAttribute="top" secondItem="i16-2i-2SY" secondAttribute="bottom" id="p8V-O7-ehx"/>
+                            <constraint firstItem="O90-sv-Wak" firstAttribute="trailing" secondItem="bOl-lV-AJF" secondAttribute="trailing" id="tna-Ft-RVk"/>
+                            <constraint firstItem="IkB-h7-o0y" firstAttribute="top" secondItem="O90-sv-Wak" secondAttribute="bottom" constant="8" symbolic="YES" id="vCg-pF-JNO"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <connections>
                         <outlet property="blurSegment" destination="vgy-pS-UWb" id="QHn-BC-EkR"/>
                         <outlet property="colorSegment" destination="O90-sv-Wak" id="Ahq-Oi-Dup"/>
+                        <outlet property="countSlider" destination="bOl-lV-AJF" id="6hl-Kn-kdy"/>
                         <outlet property="infoLabel" destination="5DP-DN-qZu" id="Z1n-9j-Vhg"/>
-                        <outlet property="timeSlider" destination="bOl-lV-AJF" id="WCS-3m-UfS"/>
+                        <outlet property="timeSlider" destination="IkB-h7-o0y" id="1CT-ZG-0vH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CtN-eO-T6n" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Dots View Controller-->
+        <scene sceneID="olo-IY-3AQ">
+            <objects>
+                <viewController storyboardIdentifier="DotsViewController" id="e1w-QY-xMS" customClass="DotsViewController" customModule="PurpleDots" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K1m-6a-hIo"/>
+                        <viewControllerLayoutGuide type="bottom" id="hPA-gf-j8x"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zCy-EQ-FcF">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="fXJ-lA-ZHx">
+                                <rect key="frame" x="18" y="430" width="444" height="31"/>
+                                <connections>
+                                    <action selector="timeSliderValueChange:" destination="e1w-QY-xMS" eventType="valueChanged" id="otP-OK-8o1"/>
+                                </connections>
+                            </slider>
+                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="440" translatesAutoresizingMaskIntoConstraints="NO" id="c71-0h-xYB">
+                                <rect key="frame" x="20" y="20" width="440" height="92"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="92" id="q9G-kY-9XO"/>
+                                </constraints>
+                                <string key="text">Stare at the black dot in the center. The purlple dots will fade away and you will see green. Tap to show controls which will autohide</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oms-J6-ohu">
+                                <rect key="frame" x="20" y="394" width="440" height="29"/>
+                                <segments>
+                                    <segment title="Magenta"/>
+                                    <segment title="Red"/>
+                                    <segment title="Green"/>
+                                    <segment title="Blue"/>
+                                </segments>
+                                <connections>
+                                    <action selector="colorSegmentValueChanged:" destination="e1w-QY-xMS" eventType="valueChanged" id="d6b-C1-kup"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dXa-TU-mEu">
+                                <rect key="frame" x="20" y="358" width="440" height="29"/>
+                                <segments>
+                                    <segment title="Light"/>
+                                    <segment title="Extra Light"/>
+                                    <segment title="Dark"/>
+                                    <segment title="None"/>
+                                </segments>
+                                <connections>
+                                    <action selector="blurSegmentValueChanged:" destination="e1w-QY-xMS" eventType="valueChanged" id="8A5-D2-hKl"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="fXJ-lA-ZHx" secondAttribute="bottom" constant="20" symbolic="YES" id="1Gm-vS-alU"/>
+                            <constraint firstItem="dXa-TU-mEu" firstAttribute="leading" secondItem="c71-0h-xYB" secondAttribute="leading" id="2hQ-0e-bbI"/>
+                            <constraint firstItem="oms-J6-ohu" firstAttribute="leading" secondItem="fXJ-lA-ZHx" secondAttribute="leading" id="6KC-dw-zs1"/>
+                            <constraint firstAttribute="trailing" secondItem="c71-0h-xYB" secondAttribute="trailing" constant="20" id="9JD-D8-eev"/>
+                            <constraint firstItem="dXa-TU-mEu" firstAttribute="leading" secondItem="oms-J6-ohu" secondAttribute="leading" id="9V6-DE-lEY"/>
+                            <constraint firstItem="c71-0h-xYB" firstAttribute="top" secondItem="K1m-6a-hIo" secondAttribute="bottom" id="BhS-WH-qAU"/>
+                            <constraint firstItem="dXa-TU-mEu" firstAttribute="trailing" secondItem="oms-J6-ohu" secondAttribute="trailing" id="ec0-aj-ydy"/>
+                            <constraint firstItem="c71-0h-xYB" firstAttribute="leading" secondItem="zCy-EQ-FcF" secondAttribute="leading" constant="20" id="kkz-lv-YmC"/>
+                            <constraint firstItem="oms-J6-ohu" firstAttribute="top" secondItem="dXa-TU-mEu" secondAttribute="bottom" constant="8" symbolic="YES" id="l4g-NE-5eH"/>
+                            <constraint firstItem="fXJ-lA-ZHx" firstAttribute="top" secondItem="oms-J6-ohu" secondAttribute="bottom" constant="8" symbolic="YES" id="phH-lK-edz"/>
+                            <constraint firstItem="fXJ-lA-ZHx" firstAttribute="trailing" secondItem="oms-J6-ohu" secondAttribute="trailing" id="t0a-e4-wyt"/>
+                            <constraint firstItem="dXa-TU-mEu" firstAttribute="trailing" secondItem="c71-0h-xYB" secondAttribute="trailing" id="uHu-YR-txN"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <connections>
+                        <outlet property="blurSegment" destination="dXa-TU-mEu" id="Ed4-qf-eTc"/>
+                        <outlet property="colorSegment" destination="oms-J6-ohu" id="PKz-U6-BdD"/>
+                        <outlet property="infoLabel" destination="c71-0h-xYB" id="fJc-ag-n1A"/>
+                        <outlet property="timeSlider" destination="fXJ-lA-ZHx" id="x1P-gE-VQB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WDq-na-4Fe" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="742"/>
+        </scene>
     </scenes>
+    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -5,11 +5,17 @@
 //  Created by Zakk Hoyt on 6/8/14.
 //  Copyright (c) 2014 Zakk Hoyt. All rights reserved.
 //
+//  Images:
 
+//  http://www.geek.com/wp-content/uploads/2013/10/12.gif
+//  http://www.moillusions.com/wp-content/uploads/2013/09/cool_optical_illusion_03.gif
+//  http://www.cartographersguild.com/attachments/general-miscellaneous-mapping/2189d1201121550-optical-illusion-graphic-map-object-no-holes.gif
+//
+//  A bunch:
+//  http://izismile.com/2013/11/04/hypnotic_optical_illusion_gifs_that_are_just_too_1_pic_17_gifs.html
+//  http://www.pomakis.com/opticalIllusions/
 #import "ViewController.h"
 
-
-const NSUInteger capacity = 12;
 
 @interface ViewController ()
 #if (__IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1)
@@ -24,6 +30,11 @@ const NSUInteger capacity = 12;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (nonatomic, strong) NSTimer *alphaTimer;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *colorSegment;
+@property (weak, nonatomic) IBOutlet UISlider *countSlider;
+@property (nonatomic) CGRect smallFrame;
+@property (nonatomic) CGRect largeFrame;
+@property (nonatomic) NSUInteger capacity;
+@property (nonatomic) BOOL controlsHidden;
 @end
 
 @implementation ViewController
@@ -37,42 +48,78 @@ const NSUInteger capacity = 12;
     self.timeSlider.value = 4;
     
     
-    self.dots = [[NSMutableArray alloc]initWithCapacity:capacity];
+    self.capacity = 12;
     
-    CGRect smallFrame;
-    CGRect largeFrame;
+    self.countSlider.value = self.capacity;
+    
+    self.dots = [[NSMutableArray alloc]initWithCapacity:self.capacity];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
-        smallFrame = CGRectMake(0, 0, 8, 8);
-        largeFrame = CGRectMake(0, 0, 100, 100);
+        self.smallFrame = CGRectMake(0, 0, 8, 8);
+        self.largeFrame = CGRectMake(0, 0, 100, 100);
         
     } else {
-        smallFrame = CGRectMake(0, 0, 4, 4);
-        largeFrame = CGRectMake(0, 0, 40, 40);
+        self.smallFrame = CGRectMake(0, 0, 4, 4);
+        self.largeFrame = CGRectMake(0, 0, 40, 40);
     }
+
+    [self configureDots];
     
-    // purple dots
-    for(NSUInteger index = 0; index < capacity; index++){
-        float angle = -2 * M_PI * index / capacity;
-        float xOffset = sin(angle) * self.view.bounds.size.width / 2.0 * 0.75;
-        float yOffset = cos(angle) * self.view.bounds.size.width / 2.0 * 0.75;;
-        
-        UIView *dot = [self addDotToView:self.view frame:largeFrame center:CGPointMake(self.view.center.x + xOffset, self.view.center.y + yOffset) color:[UIColor magentaColor]];
-        [self.dots addObject:dot];
-    }
 #if (__IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1)
-    self.centerDot = [self addDotToView:self.blurView.contentView frame:smallFrame center:self.view.center color:[UIColor blackColor]];
+    self.centerDot = [self addDotToView:self.blurView.contentView frame:self.smallFrame center:self.view.center color:[UIColor blackColor]];
 #else
     self.centerDot = [self addDotToView:self.view frame:smallFrame center:self.view.center color:[UIColor blackColor]];
     self.blurSegment.hidden = YES;
 #endif
+    
+    // Start animation timer
     [self timeSliderValueChange:self.timeSlider];
+    
     
     [self showControls];
     
+    
+    self.alphaTimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(hideControls) userInfo:nil repeats:NO];
+
 }
 
 
+-(void)configureDots{
+
+//    // Stop animation timer
+//    [self.timer invalidate];
+//    _timer = nil;
+    
+    // Remove all dots by animating them shrinking to nothing
+    for(UIView *dot in self.dots){
+        [UIView animateWithDuration:0.2 animations:^{
+            dot.transform = CGAffineTransformMakeScale(0, 0);
+        } completion:^(BOOL finished) {
+            [dot removeFromSuperview];
+            [self.dots removeObject:dot];
+        }];
+    }
+
+
+    
+    
+    // Add new dots
+    for(NSUInteger index = 0; index < self.capacity; index++){
+        float angle = -2 * M_PI * index / self.capacity;
+        float xOffset = sin(angle) * self.view.bounds.size.width / 2.0 * 0.75;
+        float yOffset = cos(angle) * self.view.bounds.size.width / 2.0 * 0.75;;
+        
+        UIView *dot = [self addDotToView:self.view frame:self.largeFrame center:self.view.center color:[UIColor magentaColor]];
+        [UIView animateWithDuration:0.2 animations:^{
+            dot.center = CGPointMake(self.view.center.x + xOffset, self.view.center.y + yOffset);
+        }];
+        
+        [self.dots addObject:dot];
+    }
+    
+    self.currentIndex = 0;
+
+}
 -(UIView*)addDotToView:(UIView*)view frame:(CGRect)frame center:(CGPoint)center color:(UIColor*)color{
     UIView *dot = [[UIView alloc]initWithFrame:frame];
     dot.backgroundColor = color;
@@ -85,7 +132,7 @@ const NSUInteger capacity = 12;
 
 -(void)cycleDot{
     
-    for(NSUInteger index = 0; index < capacity; index++){
+    for(NSUInteger index = 0; index < self.capacity; index++){
         UIView *dot = self.dots[index];
         if(index == self.currentIndex){
             //            [UIView animateWithDuration:0.1 animations:^{
@@ -100,7 +147,7 @@ const NSUInteger capacity = 12;
         }
     }
     
-    if(self.currentIndex == capacity - 1){
+    if(self.currentIndex == self.capacity - 1){
         self.currentIndex = 0;
     } else {
         self.currentIndex++;
@@ -114,24 +161,28 @@ const NSUInteger capacity = 12;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [self showControls];
+//    [self showControls];
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    if(self.controlsHidden){
+        [self showControls];
+    } else {
+        [self hideControls];
+    }
 }
 
 -(void)showControls{
+    
     [UIView animateWithDuration:0.2 animations:^{
         self.infoLabel.alpha = 1.0;
         self.colorSegment.alpha = 1.0;
         self.timeSlider.alpha = 1.0;
         self.blurSegment.alpha = 1.0;
+        self.countSlider.alpha = 1.0;
     }];
     
-    if(self.alphaTimer){
-        [self.alphaTimer invalidate];
-        _alphaTimer = nil;
-    }
-    
-    self.alphaTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(hideControls) userInfo:nil repeats:NO];
-    
+    self.controlsHidden = NO;
 }
 -(void)hideControls{
     [UIView animateWithDuration:0.2 animations:^{
@@ -139,10 +190,10 @@ const NSUInteger capacity = 12;
         self.colorSegment.alpha = 0.0;
         self.timeSlider.alpha = 0.0;
         self.blurSegment.alpha = 0.0;
+        self.countSlider.alpha = 0.0;
     }];
     
-    [self.alphaTimer invalidate];
-    _alphaTimer = nil;
+    self.controlsHidden = YES;
 }
 
 
@@ -160,6 +211,7 @@ const NSUInteger capacity = 12;
     }
     
     if(self.blurView){
+        [self.view addSubview:self.countSlider];
         [self.view addSubview:self.infoLabel];
         [self.view addSubview:self.colorSegment];
         [self.view addSubview:self.timeSlider];
@@ -174,6 +226,7 @@ const NSUInteger capacity = 12;
     self.blurView.frame = self.view.frame;
     [self.view addSubview:self.blurView];
     
+    [self.blurView.contentView addSubview:self.countSlider];
     [self.blurView.contentView addSubview:self.infoLabel];
     [self.blurView.contentView addSubview:self.colorSegment];
     [self.blurView.contentView addSubview:self.timeSlider];
@@ -187,8 +240,8 @@ const NSUInteger capacity = 12;
     [self.timer invalidate];
     _timer = nil;
     
-    
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:4 / (float)capacity / (float)sender.value target:self selector:@selector(cycleDot) userInfo:nil repeats:YES];
+    self.currentIndex = 0;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:4 / (float)self.capacity / (float)sender.value target:self selector:@selector(cycleDot) userInfo:nil repeats:YES];
     
 }
 
@@ -203,6 +256,16 @@ const NSUInteger capacity = 12;
         [self setDotsColor:[UIColor cyanColor]];
     }
 }
+
+- (IBAction)countSliderTouchUpInside:(UISlider*)sender {
+    self.capacity = sender.value;
+    [self configureDots];
+
+}
+
+- (IBAction)countSliderValueChanged:(UISlider*)sender {
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
