@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C6A78EFC19462406005D3084 /* DotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A78EFB19462406005D3084 /* DotsViewController.swift */; };
 		CF21CF8D194593D70022B978 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF21CF8C194593D70022B978 /* main.m */; };
 		CF21CF90194593D70022B978 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF21CF8F194593D70022B978 /* AppDelegate.m */; };
 		CF21CF93194593D70022B978 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF21CF92194593D70022B978 /* ViewController.m */; };
@@ -221,7 +220,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6A78EFC19462406005D3084 /* DotsViewController.swift in Sources */,
 				CF21CF93194593D70022B978 /* ViewController.m in Sources */,
 				CF21CF90194593D70022B978 /* AppDelegate.m in Sources */,
 				CF21CF8D194593D70022B978 /* main.m in Sources */,

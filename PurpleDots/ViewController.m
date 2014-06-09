@@ -35,6 +35,7 @@
 @property (nonatomic) CGRect largeFrame;
 @property (nonatomic) NSUInteger capacity;
 @property (nonatomic) BOOL controlsHidden;
+@property (nonatomic) NSUInteger colorIndex;
 @end
 
 @implementation ViewController
@@ -68,27 +69,23 @@
 #if (__IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1)
     self.centerDot = [self addDotToView:self.blurView.contentView frame:self.smallFrame center:self.view.center color:[UIColor blackColor]];
 #else
-    self.centerDot = [self addDotToView:self.view frame:smallFrame center:self.view.center color:[UIColor blackColor]];
+    self.centerDot = [self addDotToView:self.view frame:self.smallFrame center:self.view.center color:[UIColor blackColor]];
     self.blurSegment.hidden = YES;
 #endif
     
     // Start animation timer
     [self timeSliderValueChange:self.timeSlider];
-    
-    
+
     [self showControls];
     
-    
     self.alphaTimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(hideControls) userInfo:nil repeats:NO];
-
 }
 
+-(BOOL)shouldAutorotate{
+    return NO;
+}
 
 -(void)configureDots{
-
-//    // Stop animation timer
-//    [self.timer invalidate];
-//    _timer = nil;
     
     // Remove all dots by animating them shrinking to nothing
     for(UIView *dot in self.dots){
@@ -105,11 +102,15 @@
     
     // Add new dots
     for(NSUInteger index = 0; index < self.capacity; index++){
+        float radius = self.view.bounds.size.width / 2.0 * 0.75;
         float angle = -2 * M_PI * index / self.capacity;
-        float xOffset = sin(angle) * self.view.bounds.size.width / 2.0 * 0.75;
-        float yOffset = cos(angle) * self.view.bounds.size.width / 2.0 * 0.75;;
+        float xOffset = sin(angle) * radius;
+        float yOffset = cos(angle) * radius;
         
-        UIView *dot = [self addDotToView:self.view frame:self.largeFrame center:self.view.center color:[UIColor magentaColor]];
+        float circumference = 2 * M_PI * radius;
+        float dotDiameter = circumference / self.capacity / 2.0;
+        
+        UIView *dot = [self addDotToView:self.view frame:CGRectMake(0, 0, dotDiameter, dotDiameter) center:self.view.center color:[self colorFromColorIndex]];
         [UIView animateWithDuration:0.2 animations:^{
             dot.center = CGPointMake(self.view.center.x + xOffset, self.view.center.y + yOffset);
         }];
@@ -118,6 +119,10 @@
     }
     
     self.currentIndex = 0;
+    
+    if(self.blurView){
+        [self.view addSubview:self.blurView];
+    }
 
 }
 -(UIView*)addDotToView:(UIView*)view frame:(CGRect)frame center:(CGPoint)center color:(UIColor*)color{
@@ -236,6 +241,20 @@
 #endif
 }
 
+-(UIColor*)colorFromColorIndex{
+    if(self.colorIndex == 0){
+        return [UIColor magentaColor];
+    } else if(self.colorIndex == 1){
+        return [UIColor redColor];
+    } else if(self.colorIndex == 2){
+        return [UIColor greenColor];
+    } else if(self.colorIndex == 3){
+        return [UIColor cyanColor];
+    }
+    
+    return [UIColor blackColor];
+}
+
 - (IBAction)timeSliderValueChange:(UISlider*)sender {
     [self.timer invalidate];
     _timer = nil;
@@ -246,15 +265,8 @@
 }
 
 - (IBAction)colorSegmentValueChanged:(UISegmentedControl*)sender {
-    if(sender.selectedSegmentIndex == 0){
-        [self setDotsColor:[UIColor magentaColor]];
-    } else if(sender.selectedSegmentIndex == 1){
-        [self setDotsColor:[UIColor redColor]];
-    } else if(sender.selectedSegmentIndex == 2){
-        [self setDotsColor:[UIColor greenColor]];
-    } else if(sender.selectedSegmentIndex == 3){
-        [self setDotsColor:[UIColor cyanColor]];
-    }
+    self.colorIndex = sender.selectedSegmentIndex;
+    [self setDotsColor:[self colorFromColorIndex]];
 }
 
 - (IBAction)countSliderTouchUpInside:(UISlider*)sender {
@@ -263,8 +275,6 @@
 
 }
 
-- (IBAction)countSliderValueChanged:(UISlider*)sender {
-}
 
 
 - (void)didReceiveMemoryWarning {
