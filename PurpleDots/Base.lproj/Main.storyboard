@@ -1,24 +1,87 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6162" systemVersion="14A238h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hZU-HL-MrB">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6160"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="kWR-kU-erD">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="hZU-HL-MrB" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="i16-2i-2SY"/>
+                        <viewControllerLayoutGuide type="bottom" id="Swy-fj-oXx"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="6eR-9A-Z3e">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="bOl-lV-AJF">
+                                <rect key="frame" x="18" y="430" width="444" height="31"/>
+                                <connections>
+                                    <action selector="timeSliderValueChange:" destination="hZU-HL-MrB" eventType="valueChanged" id="WSb-p3-r2N"/>
+                                </connections>
+                            </slider>
+                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="440" translatesAutoresizingMaskIntoConstraints="NO" id="5DP-DN-qZu">
+                                <rect key="frame" x="20" y="20" width="440" height="92"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="92" id="aPj-5N-KXV"/>
+                                </constraints>
+                                <string key="text">Stare at the black dot in the center. The purlple dots will fade away and you will see green. Tap to show controls which will autohide</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="O90-sv-Wak">
+                                <rect key="frame" x="20" y="394" width="440" height="29"/>
+                                <segments>
+                                    <segment title="Magenta"/>
+                                    <segment title="Red"/>
+                                    <segment title="Green"/>
+                                    <segment title="Blue"/>
+                                </segments>
+                                <connections>
+                                    <action selector="colorSegmentValueChanged:" destination="hZU-HL-MrB" eventType="valueChanged" id="2Wr-8u-xHz"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vgy-pS-UWb">
+                                <rect key="frame" x="20" y="358" width="440" height="29"/>
+                                <segments>
+                                    <segment title="Light"/>
+                                    <segment title="Extra Light"/>
+                                    <segment title="Dark"/>
+                                    <segment title="None"/>
+                                </segments>
+                                <connections>
+                                    <action selector="blurSegmentValueChanged:" destination="hZU-HL-MrB" eventType="valueChanged" id="d50-kV-DL8"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bOl-lV-AJF" firstAttribute="top" secondItem="O90-sv-Wak" secondAttribute="bottom" constant="8" symbolic="YES" id="5IH-mS-xyY"/>
+                            <constraint firstItem="O90-sv-Wak" firstAttribute="trailing" secondItem="vgy-pS-UWb" secondAttribute="trailing" id="Xfa-0S-2ET"/>
+                            <constraint firstItem="5DP-DN-qZu" firstAttribute="leading" secondItem="6eR-9A-Z3e" secondAttribute="leading" constant="20" id="Ze6-Ut-yUV"/>
+                            <constraint firstAttribute="trailing" secondItem="5DP-DN-qZu" secondAttribute="trailing" constant="20" id="a5f-tC-TFf"/>
+                            <constraint firstItem="bOl-lV-AJF" firstAttribute="leading" secondItem="O90-sv-Wak" secondAttribute="leading" id="aTr-72-TKa"/>
+                            <constraint firstItem="vgy-pS-UWb" firstAttribute="trailing" secondItem="5DP-DN-qZu" secondAttribute="trailing" id="bG3-1b-MVS"/>
+                            <constraint firstItem="O90-sv-Wak" firstAttribute="trailing" secondItem="bOl-lV-AJF" secondAttribute="trailing" id="dE7-mf-TlJ"/>
+                            <constraint firstItem="O90-sv-Wak" firstAttribute="top" secondItem="vgy-pS-UWb" secondAttribute="bottom" constant="8" symbolic="YES" id="f0P-Os-Rjn"/>
+                            <constraint firstAttribute="bottom" secondItem="bOl-lV-AJF" secondAttribute="bottom" constant="20" symbolic="YES" id="hV8-g1-gbP"/>
+                            <constraint firstItem="O90-sv-Wak" firstAttribute="leading" secondItem="vgy-pS-UWb" secondAttribute="leading" id="ocg-mQ-wZF"/>
+                            <constraint firstItem="vgy-pS-UWb" firstAttribute="leading" secondItem="5DP-DN-qZu" secondAttribute="leading" id="uuE-4i-EIv"/>
+                            <constraint firstItem="5DP-DN-qZu" firstAttribute="top" secondItem="i16-2i-2SY" secondAttribute="bottom" id="wGT-cl-Xbn"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <connections>
+                        <outlet property="blurSegment" destination="vgy-pS-UWb" id="QHn-BC-EkR"/>
+                        <outlet property="colorSegment" destination="O90-sv-Wak" id="Ahq-Oi-Dup"/>
+                        <outlet property="infoLabel" destination="5DP-DN-qZu" id="Z1n-9j-Vhg"/>
+                        <outlet property="timeSlider" destination="bOl-lV-AJF" id="WCS-3m-UfS"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CtN-eO-T6n" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
